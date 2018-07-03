@@ -6,8 +6,8 @@ public class LinkExt {
 
     public static void main(String[] args) {
         try {
-//            Reddit reddit = new Reddit();
-//            System.out.println(reddit.getLinksFromReddit("https://www.reddit.com/r/soccer.json"));
+            Reddit reddit = new Reddit();
+            System.out.println(reddit.getSubreddits("http://www.reddit.com/reddits.json"));
         } catch (Exception e) {
             e.printStackTrace();
         }

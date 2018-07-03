@@ -6,6 +6,6 @@ public interface LinkFunc {
     public String getLinksFromReddit(String url);
     public String getContent(String url);
     public String getHTML(String url);
-    public ArrayList<String> getSubreddits(String url);
-    public String parse(String json, String keyword);
+    public String getSubreddits(String url);
+    public String parseJSON(String json, String keyword);
 }
