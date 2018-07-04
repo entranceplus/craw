@@ -13,13 +13,11 @@ import java.util.*;
 
 public class Reddit implements LinkFunc {
     private HttpClientUtil httpClientUtil;
-    private CustomResponseDAOImpl customResponseDAOimpl;
     private Gson gson;
 
     public Reddit() {
         gson = new Gson();
-        customResponseDAOimpl = new CustomResponseDAOImpl();
-        httpClientUtil = new HttpClientUtil(customResponseDAOimpl);
+        httpClientUtil = new HttpClientUtil();
     }
 
     @Override

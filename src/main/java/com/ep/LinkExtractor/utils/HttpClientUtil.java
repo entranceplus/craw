@@ -13,13 +13,11 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class HttpClientUtil {
+public class HttpClientUtil extends CustomResponseDAOImpl {
     private static Gson gson;
-    private CustomResponseDAOImpl customResponseDAOimpl;
 
 
-    public HttpClientUtil(CustomResponseDAOImpl customResponseDAOimpl) {
-        this.customResponseDAOimpl = customResponseDAOimpl;
+    public HttpClientUtil() {
         gson = new Gson();
     }
 
@@ -44,10 +42,10 @@ public class HttpClientUtil {
             while ((line = br.readLine()) != null) {
                 response.append(line);
             }
-           customResponseDTO = customResponseDAOimpl.createCustomResponse(response.toString(),
+           customResponseDTO = createCustomResponse(response.toString(),
                    true, httpResponse.getStatusLine().getStatusCode());
        } else {
-           customResponseDTO = customResponseDAOimpl.createCustomResponse("", false,
+           customResponseDTO = createCustomResponse("", false,
                     httpResponse.getStatusLine().getStatusCode());
 
         }
