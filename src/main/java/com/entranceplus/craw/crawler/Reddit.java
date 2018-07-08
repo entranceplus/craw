@@ -1,7 +1,9 @@
 package com.entranceplus.craw.crawler;
 
 import com.entranceplus.craw.Constants;
+import com.entranceplus.craw.dao.SubredditLinksDAOImpl;
 import com.entranceplus.craw.dto.CustomResponseDTO;
+import com.entranceplus.craw.dto.SubredditLinksDTO;
 import com.entranceplus.craw.utils.HttpClientUtil;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -11,7 +13,7 @@ import com.google.gson.GsonBuilder;
 import java.io.IOException;
 import java.util.*;
 
-public class Reddit implements Crawler {
+public class Reddit extends SubredditLinksDAOImpl implements Crawler {
     private HttpClientUtil httpClientUtil;
     private Gson gson;
 
@@ -21,23 +23,26 @@ public class Reddit implements Crawler {
     }
 
     @Override
-    public String getLinksFromReddit(String subreddit) {
+    public SubredditLinksDTO getLinksFromReddit(String subreddit) {
         CustomResponseDTO customResponseDTO;
+        SubredditLinksDTO subredditLinksDTO;
         String response;
+        subredditLinksDTO = createSubredditModel("",new ArrayList<String>());
         try {
             String url = Constants.REDDIT_ROOT_API+Constants.SUBREDDIT_PREFIX+"/"+subreddit+Constants.JSON_EXT;
             response = httpClientUtil.GET(url);
             String[] urlSplit = url.split("/");
             customResponseDTO = gson.fromJson(response, CustomResponseDTO.class);
             if (customResponseDTO.getSuccess()) {
-                return this.parseJSON(customResponseDTO.getMessage(), urlSplit[4]);
-
+                subredditLinksDTO = gson.fromJson(this.parseJSON(customResponseDTO.getMessage(), urlSplit[4]),
+                                                    SubredditLinksDTO.class);
+                return subredditLinksDTO;
             }
         } catch (IOException e) {
             e.printStackTrace();
             return null;
         }
-        return response;
+        return subredditLinksDTO;
     }
 
     @Override
@@ -50,6 +55,7 @@ public class Reddit implements Crawler {
             String[] urlSplit = url.split("/");
             customResponseDTO = gson.fromJson(response, CustomResponseDTO.class);
             if (customResponseDTO.getSuccess()) {
+
                 return this.parseJSON(customResponseDTO.getMessage(), urlSplit[3]);
 
             }
@@ -77,8 +83,9 @@ public class Reddit implements Crawler {
         try {
             JsonNode jsonObject = mapper.readValue(json, JsonNode.class);
             if(!keyword.equals("reddits.json")) {
-                Map<String, List<String>> keywordURLMapping = new HashMap<>();
-                keywordURLMapping.put(keyword, jsonObject.findValuesAsText("url"));
+                Map<String, Object> keywordURLMapping = new HashMap<>();
+                keywordURLMapping.put("subreddit", keyword);
+                keywordURLMapping.put("links", jsonObject.findValuesAsText("url"));
                 return gson.toJson(keywordURLMapping);
             } else {
                 Map<String, List<Map<String, String>>> mapKeywordsubredditFollowers = new HashMap<>();
