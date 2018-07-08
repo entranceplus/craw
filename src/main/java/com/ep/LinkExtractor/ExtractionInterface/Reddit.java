@@ -1,5 +1,6 @@
 package com.ep.LinkExtractor.ExtractionInterface;
 
+import com.ep.LinkExtractor.Constants;
 import com.ep.LinkExtractor.dao.CustomResponseDAOImpl;
 import com.ep.LinkExtractor.dto.CustomResponseDTO;
 import com.ep.LinkExtractor.utils.HttpClientUtil;
@@ -21,10 +22,11 @@ public class Reddit implements LinkFunc {
     }
 
     @Override
-    public String getLinksFromReddit(String url) {
+    public String getLinksFromReddit(String subreddit) {
         CustomResponseDTO customResponseDTO;
         String response;
         try {
+            String url = Constants.REDDIT_ROOT_API+Constants.SUBREDDIT_PREFIX+"/"+subreddit+Constants.JSON_EXT;
             response = httpClientUtil.GET(url);
             String[] urlSplit = url.split("/");
             customResponseDTO = gson.fromJson(response, CustomResponseDTO.class);
@@ -40,10 +42,11 @@ public class Reddit implements LinkFunc {
     }
 
     @Override
-    public String getSubreddits(String url) {
+    public String getSubreddits() {
         CustomResponseDTO customResponseDTO;
         String response;
         try {
+            String url = Constants.REDDIT_ROOT_API+Constants.SUBBREDDIT_KEYWORD+Constants.JSON_EXT;
             response = httpClientUtil.GET(url);
             String[] urlSplit = url.split("/");
             customResponseDTO = gson.fromJson(response, CustomResponseDTO.class);
