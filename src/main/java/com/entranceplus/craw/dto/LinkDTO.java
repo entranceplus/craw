@@ -1,4 +1,4 @@
-package com.ep.LinkExtractor.dto;
+package com.entranceplus.craw.dto;
 
 public class LinkDTO {
     public String getSublink() {

@@ -1,8 +1,8 @@
-package com.ep.LinkExtractor.utils;
+package com.entranceplus.craw.utils;
 
-import com.ep.LinkExtractor.Constants;
-import com.ep.LinkExtractor.dao.CustomResponseDAOImpl;
-import com.ep.LinkExtractor.dto.CustomResponseDTO;
+import com.entranceplus.craw.Constants;
+import com.entranceplus.craw.dao.CustomResponseDAOImpl;
+import com.entranceplus.craw.dto.CustomResponseDTO;
 import com.google.gson.Gson;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;

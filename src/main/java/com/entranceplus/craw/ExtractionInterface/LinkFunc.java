@@ -1,4 +1,4 @@
-package com.ep.LinkExtractor.ExtractionInterface;
+package com.entranceplus.craw.ExtractionInterface;
 
 import java.util.ArrayList;
 

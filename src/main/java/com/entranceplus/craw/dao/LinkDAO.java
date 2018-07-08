@@ -1,6 +1,6 @@
-package com.ep.LinkExtractor.dao;
+package com.entranceplus.craw.dao;
 
-import com.ep.LinkExtractor.dto.LinkDTO;
+import com.entranceplus.craw.dto.LinkDTO;
 
 public interface LinkDAO {
 

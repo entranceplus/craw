@@ -1,4 +1,4 @@
-import com.ep.LinkExtractor.ExtractionInterface.Reddit;
+import com.entranceplus.craw.ExtractionInterface.Reddit;
 
 
 public class LinkExt {

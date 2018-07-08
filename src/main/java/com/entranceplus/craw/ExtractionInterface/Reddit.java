@@ -1,9 +1,8 @@
-package com.ep.LinkExtractor.ExtractionInterface;
+package com.entranceplus.craw.ExtractionInterface;
 
-import com.ep.LinkExtractor.Constants;
-import com.ep.LinkExtractor.dao.CustomResponseDAOImpl;
-import com.ep.LinkExtractor.dto.CustomResponseDTO;
-import com.ep.LinkExtractor.utils.HttpClientUtil;
+import com.entranceplus.craw.Constants;
+import com.entranceplus.craw.dto.CustomResponseDTO;
+import com.entranceplus.craw.utils.HttpClientUtil;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
