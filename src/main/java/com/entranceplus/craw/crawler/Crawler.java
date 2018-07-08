@@ -1,5 +1,7 @@
 package com.entranceplus.craw.crawler;
 
+import com.entranceplus.craw.dto.SubredditLinksDTO;
+
 /**
  *Crawler interface which contains methods for parsing of a
  * website...As of now it supports reddit
@@ -9,9 +11,11 @@ public interface Crawler {
     /**
      * Get the top links from a subreddit
      * @param subreddit - The subreddit of the form Ex. soccer
-     * @return JSON string of the form {'subreddit': [list of links corresponding to subreddit]}
+     * @return SubredditLinksDTO
+     * invoke getSubreddit() to get subreddit and getLinks() to get list
+     * links
      */
-    public String getLinksFromReddit(String subreddit);
+    public SubredditLinksDTO getLinksFromReddit(String subreddit);
     public String getContent(String url);
     public String getHTML(String url);
 
