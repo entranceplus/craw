@@ -1,4 +1,4 @@
-package com.entranceplus.craw.ExtractionInterface;
+package com.entranceplus.craw.crawler;
 
 import com.entranceplus.craw.Constants;
 import com.entranceplus.craw.dto.CustomResponseDTO;
@@ -11,7 +11,7 @@ import com.google.gson.GsonBuilder;
 import java.io.IOException;
 import java.util.*;
 
-public class Reddit implements LinkFunc {
+public class Reddit implements Crawler {
     private HttpClientUtil httpClientUtil;
     private Gson gson;
 
