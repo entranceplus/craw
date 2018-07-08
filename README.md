@@ -1,3 +1,5 @@
 # link-crawler
 
-![CircleCI Build Status](https://circleci.com/gh/entranceplus/link-crawler.png?style=shield&circle-token=8dcc3037e97ea15e331de31bbb253813bb960bef) ![CircleCI Build Status](https://circleci.com/gh/entranceplus/link-crawler.png?circle-token=8dcc3037e97ea15e331de31bbb253813bb960bef) 
+To see javadocs clone the repo 
+1. `git clone https://github.com/entranceplus/craw.git`
+2. open the file `javadoc/index.html` in any browser
