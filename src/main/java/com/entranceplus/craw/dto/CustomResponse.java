@@ -1,6 +1,6 @@
 package com.entranceplus.craw.dto;
 
-public class CustomResponseDTO {
+public class CustomResponse {
     public String getMessage() {
         return message;
     }

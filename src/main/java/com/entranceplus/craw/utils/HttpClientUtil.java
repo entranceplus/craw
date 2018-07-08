@@ -2,7 +2,7 @@ package com.entranceplus.craw.utils;
 
 import com.entranceplus.craw.Constants;
 import com.entranceplus.craw.dao.CustomResponseDAOImpl;
-import com.entranceplus.craw.dto.CustomResponseDTO;
+import com.entranceplus.craw.dto.CustomResponse;
 import com.google.gson.Gson;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -23,7 +23,7 @@ public class HttpClientUtil extends CustomResponseDAOImpl {
 
     public String GET(String url) throws IOException {
         HttpClient httpClient;
-        CustomResponseDTO customResponseDTO;
+        CustomResponse customResponse;
         HttpGet httpGet;
         HttpResponse httpResponse;
         StringBuffer response;
@@ -42,13 +42,13 @@ public class HttpClientUtil extends CustomResponseDAOImpl {
             while ((line = br.readLine()) != null) {
                 response.append(line);
             }
-           customResponseDTO = createCustomResponse(response.toString(),
+           customResponse = createCustomResponse(response.toString(),
                    true, httpResponse.getStatusLine().getStatusCode());
        } else {
-           customResponseDTO = createCustomResponse("", false,
+           customResponse = createCustomResponse("", false,
                     httpResponse.getStatusLine().getStatusCode());
 
         }
-        return gson.toJson(customResponseDTO);
+        return gson.toJson(customResponse);
     }
 }

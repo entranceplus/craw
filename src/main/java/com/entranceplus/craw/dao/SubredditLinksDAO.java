@@ -1,10 +1,10 @@
 package com.entranceplus.craw.dao;
 
-import com.entranceplus.craw.dto.SubredditLinksDTO;
+import com.entranceplus.craw.dto.SubredditLinks;
 
 import java.util.List;
 
 public interface SubredditLinksDAO {
 
-    public SubredditLinksDTO createSubredditModel(String subreddit, List<String> subredditLinks);
+    public SubredditLinks createSubredditModel(String subreddit, List<String> subredditLinks);
 }

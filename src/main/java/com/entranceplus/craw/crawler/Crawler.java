@@ -1,6 +1,7 @@
 package com.entranceplus.craw.crawler;
 
-import com.entranceplus.craw.dto.SubredditLinksDTO;
+import com.entranceplus.craw.dto.SubredditLinks;
+import com.entranceplus.craw.dto.SubredditMetadata;
 
 /**
  *Crawler interface which contains methods for parsing of a
@@ -11,18 +12,19 @@ public interface Crawler {
     /**
      * Get the top links from a subreddit
      * @param subreddit - The subreddit of the form Ex. soccer
-     * @return SubredditLinksDTO
+     * @return SubredditLinks
      * invoke getSubreddit() to get subreddit and getLinks() to get list
      * links
      */
-    public SubredditLinksDTO getLinksFromReddit(String subreddit);
+    public SubredditLinks getLinksFromReddit(String subreddit);
     public String getContent(String url);
     public String getHTML(String url);
 
     /**
      * Get the subreddits with corresponding followers and subreddit
-     * @return JSON string of the form {'reddits':[{'followers':'344343','subreddit':"/r/politics/"}....]}
+     * @return SubredditMetadata - Invoke getKey() to retrieve the key
+     * and getMetadata() to get List of Subreddit.
      */
-    public String getSubreddits();
+    public SubredditMetadata getSubreddits();
     public String parseJSON(String json, String keyword);
 }

@@ -1,7 +1,7 @@
 package com.entranceplus.craw.dao;
 
-import com.entranceplus.craw.dto.CustomResponseDTO;
+import com.entranceplus.craw.dto.CustomResponse;
 
 public interface CustomResponseDAO {
-    public CustomResponseDTO createCustomResponse(String message, boolean success, int status);
+    public CustomResponse createCustomResponse(String message, boolean success, int status);
 }

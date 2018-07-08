@@ -2,7 +2,7 @@ package com.entranceplus.craw.dto;
 
 import java.util.List;
 
-public class SubredditLinksDTO {
+public class SubredditLinks {
     private String subreddit;
     private List<String> links;
 
