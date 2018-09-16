@@ -7,9 +7,10 @@ public class LinkExt {
     public static void main(String[] args) {
         try {
             Reddit reddit = new Reddit();
-            for(Subreddit subreddit:reddit.getSubreddits().getMetadata()) {
-                System.out.println("Name followers"+subreddit.getFollowers()+" "+subreddit.getSubreddit());
-            }
+//
+//            for(Subreddit subreddit:reddit.getSubreddits().getMetadata()) {
+//                System.out.println("Name followers "+subreddit.getFollowers()+" "+subreddit.getSubreddit());
+           // }
         } catch (Exception e) {
             e.printStackTrace();
         }

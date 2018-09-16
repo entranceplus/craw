@@ -93,12 +93,12 @@ public class Reddit extends CrawlerRepository implements Crawler {
             if(!keyword.equals(Constants.SUBBREDDIT_KEYWORD)) {
                 Map<String, Object> keywordURLMapping = new HashMap<>();
                 keywordURLMapping.put("subreddit", keyword);
-                keywordURLMapping.put("links", jsonObject.findValuesAsText("url"));
+                keywordURLMapping.put("links", this.extractSubredditName(jsonObject.findValuesAsText("url")));
                 return gson.toJson(keywordURLMapping);
             } else {
                 Map<String, Object> mapKeywordsubredditFollowers = new HashMap<>();
                 List<Map<String,String>> subbredditFollList = new ArrayList<>();
-                List<String> subreddits = jsonObject.findValuesAsText("url");
+                List<String> subreddits = this.extractSubredditName(jsonObject.findValuesAsText("url"));
                 List<String> followers = jsonObject.findValuesAsText("subscribers");
                 Iterator<String> subredditIt = subreddits.iterator();
                 Iterator<String> followersIt = followers.iterator();
@@ -116,5 +116,13 @@ public class Reddit extends CrawlerRepository implements Crawler {
             e.printStackTrace();
             return null;
         }
+    }
+
+    public List<String> extractSubredditName(List<String> subreddits) {
+        List<String> strippedPrefixList = new ArrayList<>();
+        for (String subreddit: subreddits) {
+            strippedPrefixList.add(subreddit.split("/")[2]);
+        }
+        return strippedPrefixList;
     }
 }
