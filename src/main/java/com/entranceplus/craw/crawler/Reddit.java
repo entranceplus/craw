@@ -100,12 +100,19 @@ public class Reddit extends CrawlerRepository implements Crawler {
                 List<Map<String,String>> subbredditFollList = new ArrayList<>();
                 List<String> subreddits = this.extractSubredditName(jsonObject.findValuesAsText("url"));
                 List<String> followers = jsonObject.findValuesAsText("subscribers");
+                List<String> title = jsonObject.findValuesAsText("title");
+                List<String> thumbnails = jsonObject.findValuesAsText("icon_img");
+                Iterator<String> titleIt = title.iterator();
+                Iterator<String> thumbnailsIt = thumbnails.iterator();
                 Iterator<String> subredditIt = subreddits.iterator();
                 Iterator<String> followersIt = followers.iterator();
-                while(subredditIt.hasNext() && followersIt.hasNext()) {
+                while(subredditIt.hasNext() && followersIt.hasNext() &&
+                      titleIt.hasNext() && thumbnailsIt.hasNext()) {
                     Map<String, String> mapsubredditFollowers = new HashMap<>();
                     mapsubredditFollowers.put("subreddit", (String)subredditIt.next());
                     mapsubredditFollowers.put("followers", (String)followersIt.next());
+                    mapsubredditFollowers.put("title", (String)titleIt.next());
+                    mapsubredditFollowers.put("thumbnail", (String)thumbnailsIt.next());
                     subbredditFollList.add(mapsubredditFollowers);
                 }
                 mapKeywordsubredditFollowers.put("key", keyword);
